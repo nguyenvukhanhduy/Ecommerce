@@ -6,12 +6,14 @@ const app = express()
 
 
 //init middleware
-app.use(morgan("dev"))
-app.use(helmet())
-app.use(compression())
+app.use(morgan("dev")) // edit response 
+app.use(helmet()) // mã hoá api 
+app.use(compression()) // giảm tải dữ liệu
 
 //jnit db
-
+require('./dbs/init.mongodb')
+const {checkOverload} = require('./helpers/check.connect')
+checkOverload()
 //init router  
 app.get('/', (req, res, next) => {
     return res.status(200).json({
