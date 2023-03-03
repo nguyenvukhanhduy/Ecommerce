@@ -1,3 +1,5 @@
+const { exitCode } = require("process")
+
 1.Nhược điểm của cách connect cũ 
 2.Cách connect mới khuyên dùng
 3.Kiểm tra hệ thống có bao nhiêu connect
@@ -5,3 +7,10 @@
 5.Có nên disconnect() liên tục hay không 
 6.PoolSize là gì? Vì sao lại quan trọng
 7.Nếu vượt quá kết nối PoolSize
+
+
+file config dùng để kiểm soát lưu trữ những cài đặt ứng dụng của ta mà có thể kiểm soát đc exitCode, kiểm soát dc phiên bản
+. Không được lưu trũ những thông tin nhạy cảm 
+
+
+
