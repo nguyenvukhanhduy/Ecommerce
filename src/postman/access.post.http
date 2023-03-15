@@ -2,9 +2,10 @@
 //SigUP
 POST {{url_dev}}/shop/signup
 Content-Type: application/json
+x-api-key: 0122e8e391ed0a36b61a7bd0fc3bd8c550da80cfbbd8c318fb51bd5e4c66209139bba9a0856b1c8d760bf5758861c9e4671b202540e237782d9008627504fddd
 
 {
     "name": "Duy123",
-    "email": "duydeptrai03@gmail.com",
+    "email": "duydeptrai79@gmail.com",
     "password": "abc123"
 }
