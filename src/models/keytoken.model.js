@@ -5,23 +5,27 @@ const DOCUMENT_NAME = 'Key'
 const COLLECTION_NAME = 'Keys'
 // Declare the Schema of the Mongo model
 const keyTokenSchema = new Schema({
-    name: {
+    user: {
         type: Schema.Types.ObjectId,
         require: true,
         ref: 'Shop'
     },
     privateKey: {
         type: String,
-        require: true,
+        required: true,
     },
     publicKey: {
         type: String,
-        require: true,
+        required: true,
     },
-    refreshToken: {
+    refreshTokensUsed: {
         type: Array,
         default: []     
     },
+    refreshToken: {
+        type: String,
+        required: true
+    }
 },{
     timestamps: true,
     collection: COLLECTION_NAME
