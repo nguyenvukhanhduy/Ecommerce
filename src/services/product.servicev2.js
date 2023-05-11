@@ -6,7 +6,9 @@ const { findAllDraftsForShop,
     publishProductByShop,
     findAllPublishForShop,
     unPublishProductByShop,
-    searchProductByUser
+    searchProductByUser,
+    findAllProducts,
+    findProduct
 } = require('../models/repositories/product.repo')
 
 // define Factory class to create product
@@ -27,6 +29,13 @@ class ProductFactoryV2 {
         if (!productClass) throw new BadRequestError(`Invalid Product Type ${type}`)
         return new productClass(payload).createProduct()
     }
+
+    static async updateProduct(type, payload) {
+        const productClass = ProductFactoryV2.productRegistry[type]
+        if (!productClass) throw new BadRequestError(`Invalid Product Type ${type}`)
+        return new productClass(payload).createProduct()
+    }
+
     //PUT
     static async publishProductByShop({ product_shop, product_id }) {
         return await publishProductByShop({ product_shop, product_id })
@@ -49,6 +58,16 @@ class ProductFactoryV2 {
 
     static async searchProduct({ keySearch }) {
         return await searchProductByUser({ keySearch })
+    }
+
+    static async findAllProducts({ limit = 50, sort = 'ctime', page = 1, filter = { isPublished: true } }) {
+        return await findAllProducts({ limit, sort, page, filter, 
+            select:['product_name', 'product_price', 'product_thumb']
+        })
+    }
+
+    static async findProduct({ product_id }) {
+        return await findProduct({ product_id, unSelect: ['__v'] }) // return tham số muốn hiển thị
     }
 }
 
