@@ -15,6 +15,7 @@ const unGetSelectData = (select = []) => {
     return Object.fromEntries(select.map(el => [el, 0]))
 }
 
+//kiểm tra không update các att có gia trị null khi update
 const removeUndefinedObject = obj => {
     Object.keys(obj).forEach(k => {
         if (obj[k] == null) {
@@ -26,7 +27,7 @@ const removeUndefinedObject = obj => {
 }
 
 /*
-
+     đệ quy kiểm tra update khi update những att cần thiết
 */
 const updateNestedObjectParser = obj => {
     const final = {}
