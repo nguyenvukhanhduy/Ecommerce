@@ -23,6 +23,10 @@ const discountSchema = new Schema({
         type: Number,
         required: true
     },//10.000,10
+    discount_max_value:{
+        type: String,
+        required: true
+    },
     discount_code: {
         type: String,
         required: true
